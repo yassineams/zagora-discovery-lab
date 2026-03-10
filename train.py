@@ -63,6 +63,8 @@ def parse_args():
     parser.add_argument("--batch_size", type=int, default=BATCH_SIZE)
     parser.add_argument("--time_budget", type=int, default=TIME_BUDGET)
     parser.add_argument("--max_examples", type=int, default=MAX_EXAMPLES)
+    parser.add_argument("--max_val_examples", type=int, default=500,
+                        help="Max val examples (0 = all, default 500 for discovery)")
     parser.add_argument("--max_length", type=int, default=MAX_LENGTH)
     parser.add_argument("--model", default=MODEL)
     parser.add_argument("--seed", type=int, default=42)
@@ -88,6 +90,7 @@ def main():
         model_name=args.model,
         max_length=args.max_length,
         max_examples=args.max_examples,
+        max_val_examples=args.max_val_examples,
     )
     train_loader = DataLoader(
         train_data, batch_size=args.batch_size, shuffle=True,

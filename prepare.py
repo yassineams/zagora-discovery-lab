@@ -37,7 +37,7 @@ def format_example(example: dict) -> str:
 
 
 def tokenize_dataset(model_name: str = DEFAULT_MODEL, max_length: int = 512,
-                     max_examples: int = 0):
+                     max_examples: int = 0, max_val_examples: int = 0):
     """Download, tokenize, split, and cache the dataset.
 
     Returns (train_dataset, val_dataset) as lists of {input_ids, attention_mask, labels}.
@@ -63,6 +63,8 @@ def tokenize_dataset(model_name: str = DEFAULT_MODEL, max_length: int = 512,
     if max_examples > 0:
         train_indices = sorted(train_indices)[:max_examples]
     val_indices = sorted(val_indices)
+    if max_val_examples > 0:
+        val_indices = val_indices[:max_val_examples]
 
     print(f"Split: {len(train_indices)} train, {len(val_indices)} val")
 
