@@ -2,7 +2,7 @@
 
 **Llama 8B → 70B proxy-to-target hyperparameter transfer**
 
-A proxy-discovered LoRA recipe beat the default both locally and in a single controlled 70B distributed screen. The gap compressed under stricter local confirmation (4.14% → 1.48%), then re-expanded in the 70B screen (3.35%).
+A proxy-discovered LoRA recipe beat the default both locally and in a single controlled 70B distributed test. The gap compressed under stricter local confirmation (4.14% → 1.48%), then re-expanded in the 70B test (3.35%).
 
 Inspired by [karpathy/autoresearch](https://github.com/karpathy/autoresearch): 3 files, fixed budget, autonomous search.
 
@@ -107,7 +107,7 @@ I used [Zagora](https://zagora.ai), a distributed LoRA fine-tuning platform usin
 | Confirmation | 8B | 2000 | 10 min | 1.48% |
 | Cross-Scale | 70B | 1600 | 20 steps | 3.35% |
 
-The gap compressed under stricter local confirmation, then re-expanded in the 70B screen. This is evidence that the discovered recipe transfers across scale (not proof of a universal principle).
+The gap compressed under stricter local confirmation, then re-expanded in the 70B test. This is evidence that the discovered recipe transfers across scale (not proof of a universal principle).
 
 ## The Discovered Recipe
 
@@ -243,11 +243,11 @@ You can run this with any distributed fine-tuning tool that supports LoRA on 70B
 5. **Single paired run at 70B** : Directional evidence, not a replicated result. One pair cannot establish statistical significance.
 6. **EBS overridden** to 64 for both 70B runs. Batch-dependent effects from discovery (EBS=16) are lost.
 7. **Fixed step budget (20 steps), not full convergence** : Val_loss at step 20 is a ranking signal, not a final quality measure.
-8. **No candidate cleared the pre-registered >3% threshold** : The 70B screen was a proof-of-concept, not a validated promotion.
+8. **No candidate cleared the pre-registered >3% threshold** : The 70B test was a proof-of-concept, not a validated promotion.
 
 ## Takeaways
 
-1. A proxy-discovered LoRA recipe beat the default both locally (C2: 1.48%, 3/3 seeds; C1-C3: 9/9 aggregate) and in a single controlled 70B screen (3.35%). The gap compressed under stricter confirmation, then re-expanded at 70B.
+1. A proxy-discovered LoRA recipe beat the default both locally (C2: 1.48%, 3/3 seeds; C1-C3: 9/9 aggregate) and in a single controlled 70B test (3.35%). The gap compressed under stricter confirmation, then re-expanded at 70B.
 2. The discovery phase identified (rank 4, all 7 modules) as consistently better than (rank 8, 2 modules) across 100 experiments on 8B.
 3. Local confirmation is essential : compressed the discovery signal from 4.14% to 1.48%, revealing which improvements are durable under more data and time.
 4. The C2 recipe beat the baseline at both scales in this experiment.
