@@ -15,7 +15,6 @@ Get the lowest **val_loss** possible. Each experiment runs for a fixed 5-minute 
 ## How To Run
 
 ```bash
-source /root/zagora-lab/bin/activate
 python train.py --lr 2e-4 --rank 8 --note "your_hypothesis" > run.log 2>&1
 grep "val_loss\|train_loss\|steps\|elapsed" run.log
 ```

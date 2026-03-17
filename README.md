@@ -128,7 +128,7 @@ The gap compressed under stricter local confirmation, then re-expanded in the 70
 
 ### Phase 1: Discovery (single GPU)
 
-The discovery phase uses an autonomous agent running [`program.md`](program.md) in a loop — it defines the hyperparameter space, experiment loop, and strategy guidelines. The agent ran 100 experiments, each a single `train.py` call with different hyperparameters.
+The discovery phase uses an autonomous agent running [`program.md`](program.md) in a loop. It defines the hyperparameter space, experiment loop, and strategy guidelines. The agent ran 100 experiments, each a single `train.py` call with different hyperparameters.
 
 ```bash
 pip install -r requirements.txt
@@ -180,7 +180,7 @@ target_modules=q_proj,v_proj
 
 **Both runs should share**: same seed, same dataset subset, same step budget, same EBS, same quantization, same max_length.
 
-You can run this with any distributed fine-tuning tool that supports LoRA on 70B-class models. Our run used [Zagora](https://zagora.ai) (distributed LoRA via Petals pipeline parallelism, 2 GPU workers, VPS coordinator), but alternatives include DeepSpeed ZeRO, FSDP, or multi-node setups with enough aggregate VRAM.
+You can run this with any distributed fine-tuning tool that supports LoRA on 70B-class models. My run used [Zagora](https://zagora.ai) (distributed LoRA via Petals pipeline parallelism, 2 GPU workers, VPS coordinator), but alternatives include DeepSpeed ZeRO, FSDP, or multi-node setups with enough aggregate VRAM.
 
 ## Structured Findings
 
@@ -248,7 +248,7 @@ You can run this with any distributed fine-tuning tool that supports LoRA on 70B
 ## Takeaways
 
 1. A proxy-discovered LoRA recipe beat the default both locally (C2: 1.48%, 3/3 seeds; C1-C3: 9/9 aggregate) and in a single controlled 70B screen (3.35%). The gap compressed under stricter confirmation, then re-expanded at 70B.
-2. The discovery phase identified (rank 4, all 7 modules) as consistently better than (rank 8, 2 modules) across 100 experiments on 8B. This is the most impactful finding.
+2. The discovery phase identified (rank 4, all 7 modules) as consistently better than (rank 8, 2 modules) across 100 experiments on 8B.
 3. Local confirmation is essential : compressed the discovery signal from 4.14% to 1.48%, revealing which improvements are durable under more data and time.
 4. The C2 recipe beat the baseline at both scales in this experiment.
 5. This is candidate evidence for proxy-to-target transfer within a model family, not a universal result. Replication on other families and datasets is needed.
