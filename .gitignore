@@ -31,11 +31,8 @@ env/
 .DS_Store
 Thumbs.db
 
-# Runbooks (local only)
-TEST_RUNBOOK.md
-RESULTS.md
-STEP12_RUNBOOK.md
-DISCUSSION.md
+# dev (local only)
+dev/
 
 # HuggingFace cache
 .cache/
