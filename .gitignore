@@ -33,6 +33,9 @@ Thumbs.db
 
 # Runbooks (local only)
 TEST_RUNBOOK.md
+RESULTS.md
+STEP12_RUNBOOK.md
+DISCUSSION.md
 
 # HuggingFace cache
 .cache/
