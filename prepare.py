@@ -16,7 +16,7 @@ from transformers import AutoTokenizer, default_data_collator
 
 # ---------- constants ----------
 DATASET_NAME = "yahma/alpaca-cleaned"
-SPLIT_SEED = 42  # fixed across all phases
+SPLIT_SEED = 42
 VAL_RATIO = 0.1
 CACHE_DIR = os.path.join(os.path.dirname(__file__), "data")
 DEFAULT_MODEL = "meta-llama/Meta-Llama-3.1-8B-Instruct"
